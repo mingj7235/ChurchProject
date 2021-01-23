@@ -2,6 +2,7 @@ package model;
 
 public class UserDTO {
 	
+	private int user_num;
 	private String name; //이름
 	private String phonenum; //전화번호
 	private String age; //또래
@@ -9,6 +10,13 @@ public class UserDTO {
 	private String chief;	//또래장
 	
 	
+	
+	public int getUser_num() {
+		return user_num;
+	}
+	public void setUser_num(int user_num) {
+		this.user_num = user_num;
+	}
 	public String getName() {
 		return name;
 	}
