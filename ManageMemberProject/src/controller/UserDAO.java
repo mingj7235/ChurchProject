@@ -31,11 +31,12 @@ public class UserDAO {
 			pstmt.setString(5, dto.getChief());
 			
 			
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			DBconnection.dbClose(rs, pstmt, conn);
 		}
-		
+		System.out.println("청년부 등록 완료");
 		
 	}
 	
