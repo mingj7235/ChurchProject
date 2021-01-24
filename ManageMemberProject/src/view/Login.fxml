@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -10,7 +11,13 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label style="-fx-font-family: &quot;NanumGothic&quot;; -fx-font-size: 17px; -fx-text-fill: 96bb7c;" text="중앙교회 청년부 회원 관리 프로그램" />
+            <Label style="-fx-font-family: &quot;NanumGothic&quot;; -fx-font-size: 17px; -fx-font-weight: bold; -fx-text-fill: #ea6017;" text="&lt;중앙교회 청년부 회원 관리 프로그램&gt;">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -19,6 +26,9 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Lucida Bright Demibold" size="12.0" />
+               </font>
             </Label>
             <TextField fx:id="login_id_textfield" promptText="아이디를 적어주세요" style="-fx-background-color: ffdcb8;">
                <font>
@@ -33,16 +43,37 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Lucida Bright Demibold Italic" size="12.0" />
+               </font>
             </Label>
-            <PasswordField promptText="비밀번호를 적어주세요" style="-fx-background-color: ffdcb8;" />
+            <PasswordField fx:id="login_pw_textfield" promptText="비밀번호를 적어주세요" style="-fx-background-color: ffdcb8;" />
          </children>
       </HBox>
-      <HBox fx:id="testHbox" alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="login_current_date" text="2021-01-17">
+            <Button fx:id="Login_btn" mnemonicParsing="false" style="-fx-background-color: #f8c291;" text="Login">
+               <font>
+                  <Font name="Lucida Bright Demibold Italic" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <HBox fx:id="testHbox" alignment="BOTTOM_RIGHT" prefHeight="18.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="login_current_date" text="ver 1.0">
                <font>
                   <Font name="Lucida Bright Italic" size="12.0" />
                </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" right="10.0" />
+               </HBox.margin>
             </Label>
          </children>
       </HBox>

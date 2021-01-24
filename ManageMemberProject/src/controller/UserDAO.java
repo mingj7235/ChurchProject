@@ -14,6 +14,13 @@ public class UserDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
+	//관리 계정 체크 (목사님(관리자계정), 임원, 새가족팀)
+	
+	public void login (String id, String pw) {
+		
+	}
+	
+	
 	//청년부 등록
 	
 	public void signUp (UserDTO dto) {
