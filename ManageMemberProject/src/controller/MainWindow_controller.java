@@ -6,10 +6,12 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 
 public class MainWindow_controller implements Initializable{
 	
 	@FXML private ScrollPane Mainwindow_scrollpane;
+	@FXML private ImageView Mainwindow_list;
 	
 	
 	@Override
