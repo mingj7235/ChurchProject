@@ -16,8 +16,18 @@ public class UserDAO {
 	
 	//관리 계정 체크 (목사님(관리자계정), 임원, 새가족팀)
 	
-	public void login (String id, String pw) {
-		
+	public int login (String id, String pw) {
+		int result = 0;
+		//관리자 (목사님,임원) 계정일경우
+		if(id.equals("admin") && pw.equals("admin1234")) {
+			result = 1;
+		//새가족 계정일경우
+		} else if (id.equals("newface")&& pw.equals("newface12")) {
+			result =2;
+		} else {
+			result = 3;
+		}
+		return result;
 	}
 	
 	
@@ -30,14 +40,12 @@ public class UserDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getPhonenum());
 			pstmt.setString(3, dto.getAge());
 			pstmt.setString(4, dto.getGrade());
 			pstmt.setString(5, dto.getChief());
-			
-			
+			pstmt.execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

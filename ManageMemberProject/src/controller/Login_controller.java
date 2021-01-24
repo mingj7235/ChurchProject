@@ -41,20 +41,38 @@ public class Login_controller implements Initializable{
 		
 		String id = login_id_textfield.getText();
 		String pw = login_pw_textfield.getText();
+		UserDAO dao = new UserDAO();
 		
-		
-		
-		
-		
-		try {
-			Parent signup=FXMLLoader.load(getClass().getClassLoader().getResource("view/MainWindow.fxml"));
-			Scene scene = new Scene(signup);
-			Stage primaryStage = (Stage) Login_btn.getScene().getWindow();
-			primaryStage.setTitle("Central_ove");
-			primaryStage.setScene(scene);
-		}catch (Exception e) {
-			e.printStackTrace();
+		//관리자계정
+		if(dao.login(id, pw) == 1) {
+			try {
+				Parent signup=FXMLLoader.load(getClass().getClassLoader().getResource("view/MainWindow.fxml"));
+				Scene scene = new Scene(signup);
+				Stage primaryStage = (Stage) Login_btn.getScene().getWindow();
+				primaryStage.setTitle("Central_ove");
+				primaryStage.setScene(scene);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		//새가족 계정
+		} else if (dao.login(id, pw) == 2) {
+			//resource 수정해야함 
+			try {
+				Parent signup=FXMLLoader.load(getClass().getClassLoader().getResource("view/MainWindow.fxml"));
+				Scene scene = new Scene(signup);
+				Stage primaryStage = (Stage) Login_btn.getScene().getWindow();
+				primaryStage.setTitle("Central_ove");
+				primaryStage.setScene(scene);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			//로그인 실패 
+			System.out.println("비밀번호 확인");
 		}
+		
+		
+		
 	}
 
 }
