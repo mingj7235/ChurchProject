@@ -6,10 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: ffeebb;" 
-xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="controller.Login_controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" style="-fx-background-color: ffeebb;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login_controller">
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -40,7 +37,7 @@ fx:controller="controller.Login_controller">
             <PasswordField promptText="비밀번호를 적어주세요" style="-fx-background-color: ffdcb8;" />
          </children>
       </HBox>
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <HBox fx:id="testHbox" alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Label fx:id="login_current_date" text="2021-01-17">
                <font>

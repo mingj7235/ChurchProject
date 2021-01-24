@@ -42,6 +42,11 @@ public class UserDAO {
 	
 	//청년부 수정
 	
+	public void update (UserDTO dto, String name) {
+		conn = DBconnection.getConnection();
+		//이름을 입력 받아서 업데이트 
+		String sql = "";
+	}
 	//청년부 삭제
 	
 	//청년부 조회
