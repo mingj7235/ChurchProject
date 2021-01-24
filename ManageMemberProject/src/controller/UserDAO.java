@@ -3,7 +3,9 @@ package controller;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import db.DBconnection;
 import model.UserDTO;
 
 public class UserDAO {
@@ -15,6 +17,24 @@ public class UserDAO {
 	//청년부 등록
 	
 	public void signUp (UserDTO dto) {
+		conn = DBconnection.getConnection();
+		//번호, 이름, 핸드폰, 또래, 등급, 또래장
+		String sql = "INSERT INTO churchmember VALUES (member_seq.nextval, ?,?,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getPhonenum());
+			pstmt.setString(3, dto.getAge());
+			pstmt.setString(4, dto.getGrade());
+			pstmt.setString(5, dto.getChief());
+			
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 	}
