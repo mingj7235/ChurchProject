@@ -138,7 +138,11 @@ public class UserDAO {
 	
 	//청년부전체 조회
 	public ArrayList<UserDTO> selectAll () {
+		ArrayList<UserDTO> members = new ArrayList<UserDTO>();
+		String sql = "";
 		
+		
+		return members;
 	}
 }
 
