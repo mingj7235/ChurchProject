@@ -33,34 +33,53 @@ public class UserDAO {
 	
 	//청년부 등록
 	
-	public void signUp (UserDTO dto) {
-		conn = DBconnection.getConnection();
+	public boolean signUp (UserDTO dto) {
+		
 		//번호, 이름, 핸드폰, 또래, 등급, 또래장
 		String sql = "INSERT INTO churchmember VALUES (member_seq.nextval, ?,?,?,?,?)";
-		
+		boolean check = false;
 		try {
+			conn = DBconnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getPhonenum());
 			pstmt.setString(3, dto.getAge());
 			pstmt.setString(4, dto.getGrade());
 			pstmt.setString(5, dto.getChief());
-			pstmt.execute();
+			if (pstmt.executeUpdate() ==1 ) {
+				check = true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			DBconnection.dbClose(rs, pstmt, conn);
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		System.out.println("청년부 등록 완료");
+		return check;
 		
 	}
 	
 	//청년부 수정
 	
-	public void update (UserDTO dto, String name) {
-		conn = DBconnection.getConnection();
+	public void update (String name) {
 		//이름을 입력 받아서 업데이트 
-		String sql = "";
+		String sql = "UPDATE CHURCHMEMBER SET ";
+		try {
+			conn = DBconnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	//청년부 삭제
 	
