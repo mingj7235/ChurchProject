@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import db.DBconnection;
 import model.UserDTO;
@@ -105,7 +106,51 @@ public class UserDAO {
 		
 	}
 	//청년부 삭제
+	public boolean delete (String phonenum) {
+		String sql = "DELETE FROM CHURCHMEMBER WHERE PHONENUM = ?";
+		boolean check = false;
+		
+		try {
+			conn = DBconnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, phonenum);
+			
+			if ( pstmt.executeUpdate() ==1 ) {
+				check = true;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return check;
+	}
 	
-	//청년부 조회
-	
+	//청년부전체 조회
+	public ArrayList<UserDTO> selectAll () {
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
