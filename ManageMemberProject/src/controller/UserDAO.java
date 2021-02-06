@@ -60,8 +60,7 @@ public class UserDAO {
 					conn.close();
 				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new RuntimeException(e.getMessage());
 			}
 		}
 		return check;
@@ -70,16 +69,40 @@ public class UserDAO {
 	
 	//청년부 수정
 	
-	public void update (String name) {
+	public boolean update (String phonenum, String new_name, String new_phonenum, String new_age, String new_grade, String new_chief) {
 		//이름을 입력 받아서 업데이트 
-		String sql = "UPDATE CHURCHMEMBER SET ";
+		String sql = "UPDATE CHURCHMEMBER SET NAME = ? PHONENUM = ? AGE = ? GRADE = ? CHIEF = ? WHERE PHONENUM =?";
+		boolean check = false;
 		try {
 			conn = DBconnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, new_name);
+			pstmt.setString(2, new_phonenum);
+			pstmt.setString(3, new_age);
+			pstmt.setString(4, new_grade);
+			pstmt.setString(5, new_chief);
+			pstmt.setString(6, phonenum);
+			
+			if(pstmt.executeUpdate() ==1) {
+				check = true;
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
 		}
+		return check;
+		
 	}
 	//청년부 삭제
 	
