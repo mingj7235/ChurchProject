@@ -151,7 +151,25 @@ public class UserDAO {
 	//청년부전체 조회
 	public ArrayList<UserDTO> selectAll () {
 		ArrayList<UserDTO> members = new ArrayList<UserDTO>();
-		String sql = "";
+		String sql = "SELECT * FROM CHURCHMEMBER";
+		
+		try {
+			conn = DBconnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				UserDTO member = new UserDTO();
+				member.setName(rs.getString("NAME"));
+				member.setPhonenum(rs.getString(""));
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		
 		return members;
