@@ -2,12 +2,15 @@
 --청년부 멤버테이블
 CREATE TABLE churchmember (
 	user_num number(4) PRIMARY KEY,
-	name varchar2(10) NOT NULL,
-	phonenum varchar2(20) NOT NULL UNIQUE,
+	name varchar2(20) NOT NULL,
+	phonenum varchar2(20) UNIQUE,
 	age varchar2(10),
-	grade varchar(20), 
-	chief varchar2(10)
+	grade varchar(20) 
 	);
+
+DROP TABLE CHURCHMEMBER ;
+
+
 
 CREATE SEQUENCE member_seq
 	START WITH 1
@@ -25,5 +28,6 @@ INSERT INTO membergrade VALUES ('youth', 'youth1234', '임원들계정');
 INSERT INTO membergrade VALUES ('newface', 'newface12', '새가족팀계정');
 
 SELECT * FROM MEMBERGRADE WHERE USER_ID = 'admin';
+SELECT * FROM CHURCHMEMBER;
 
 COMMIT;

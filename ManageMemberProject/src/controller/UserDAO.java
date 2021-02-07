@@ -57,7 +57,6 @@ public class UserDAO {
 			pstmt.setString(2, dto.getPhonenum());
 			pstmt.setString(3, dto.getAge());
 			pstmt.setString(4, dto.getGrade());
-			pstmt.setString(5, dto.getChief());
 			if (pstmt.executeUpdate() ==1 ) {
 				check = true;
 			}
@@ -92,8 +91,7 @@ public class UserDAO {
 			pstmt.setString(2, new_phonenum);
 			pstmt.setString(3, new_age);
 			pstmt.setString(4, new_grade);
-			pstmt.setString(5, new_chief);
-			pstmt.setString(6, phonenum);
+			pstmt.setString(5, phonenum);
 			
 			if(pstmt.executeUpdate() ==1) {
 				check = true;
@@ -164,7 +162,6 @@ public class UserDAO {
 				user.setPhonenum(rs.getString(3));
 				user.setAge(rs.getString(4));
 				user.setGrade(rs.getString(5));
-				user.setChief(rs.getString(6));
 			}
 			
 		} catch (SQLException e) {
@@ -192,7 +189,6 @@ public class UserDAO {
 				member.setPhonenum(rs.getString("PHONENUM"));
 				member.setAge(rs.getString("AGE"));
 				member.setGrade(rs.getString("GRADE"));
-				member.setChief(rs.getString("CHIEF"));
 				members.add(member);
 			}
 			

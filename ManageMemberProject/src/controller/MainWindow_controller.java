@@ -19,6 +19,8 @@ public class MainWindow_controller implements Initializable{
 		Mainwindow_scrollpane.vbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
 		Mainwindow_scrollpane.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
 		
+		
+		
 	}
 
 }

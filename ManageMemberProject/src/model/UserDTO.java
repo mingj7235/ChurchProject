@@ -7,7 +7,6 @@ public class UserDTO {
 	private String phonenum; //전화번호
 	private String age; //또래
 	private String grade; //비고 (출석에따라 등급)
-	private String chief;	//또래장
 	
 	
 	
@@ -40,12 +39,6 @@ public class UserDTO {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
-	}
-	public String getChief() {
-		return chief;
-	}
-	public void setChief(String chief) {
-		this.chief = chief;
 	}
 	
 	
