@@ -14,6 +14,7 @@ public class UserDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
+	public static String sessionID = null;
 	
 	//관리 계정 체크 (목사님(관리자계정), 임원, 새가족팀)
 	
@@ -22,13 +23,24 @@ public class UserDAO {
 		//관리자 (목사님,임원) 계정일경우
 		if(id.equals("admin") && pw.equals("admin1234")) {
 			result = 1;
+			sessionID = id;
 		//새가족 계정일경우
 		} else if (id.equals("newface")&& pw.equals("newface12")) {
 			result =2;
+			sessionID = id;
 		} else {
 			result = 3;
 		}
 		return result;
+	}
+	
+	public boolean logout () {
+		boolean check = false;
+		if (sessionID != null) {
+			sessionID = null;
+			check = true;
+		}
+		return check;
 	}
 	
 	
