@@ -43,7 +43,6 @@ public class UserDAO {
 		return check;
 	}
 	
-	
 	//청년부 등록
 	
 	public boolean signUp (UserDTO dto) {
@@ -148,8 +147,36 @@ public class UserDAO {
 		return check;
 	}
 	
+	public UserDTO findMember (String name) {
+		UserDTO user = null;
+		String sql = "SELECT * FROM CHURCHMEMBER WHERE NAME = ?";
+		
+		try {
+			conn = DBconnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				user = new UserDTO();
+				user.setName(rs.getString(2));
+				user.setPhonenum(rs.getString(3));
+				user.setAge(rs.getString(4));
+				user.setGrade(rs.getString(5));
+				user.setChief(rs.getString(6));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return user;
+		
+	}
+	
 	//청년부전체 조회
-	public ArrayList<UserDTO> selectAll () {
+	public ArrayList<UserDTO> FindMemberAll () {
 		ArrayList<UserDTO> members = new ArrayList<UserDTO>();
 		String sql = "SELECT * FROM CHURCHMEMBER";
 		
@@ -162,16 +189,30 @@ public class UserDAO {
 			while (rs.next()) {
 				UserDTO member = new UserDTO();
 				member.setName(rs.getString("NAME"));
-				member.setPhonenum(rs.getString(""));
-				
+				member.setPhonenum(rs.getString("PHONENUM"));
+				member.setAge(rs.getString("AGE"));
+				member.setGrade(rs.getString("GRADE"));
+				member.setChief(rs.getString("CHIEF"));
+				members.add(member);
 			}
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException();
+			}
 		}
-		
-		
 		return members;
 	}
 }
